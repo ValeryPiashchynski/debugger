@@ -25,7 +25,6 @@ private:
     std::intptr_t m_addr;
     bool m_enabled;
     uint8_t m_saved_data; // data which used to be at the breakpoint address
-
 };
 
 
