@@ -30,8 +30,6 @@ int main(int argc, char *argv[]) {
         // exec debugger
         debugger dbg{prog, pid};
     }
-
-
 }
 
 
