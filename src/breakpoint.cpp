@@ -15,11 +15,14 @@ void breakpoint::enable() {
     uint64_t int3 = 0xcc;
     uint64_t data_with_int3 = ((data & ~0xff) | int3); // set bottom byte to 0xcc
     ptrace(PTRACE_POKEDATA, m_pid, m_addr, data_with_int3);
-    m_enabled = 3;
+    m_enabled = true;
 }
 
 void breakpoint::disable() {
-
+    long int data = ptrace(PTRACE_PEEKDATA, m_pid, m_addr, nullptr);
+    auto restored_data = ((data & ~0xff) | m_saved_data);
+    ptrace(PTRACE_POKEDATA, m_pid, m_addr, restored_data);
+    m_enabled = false;
 }
 
 auto breakpoint::is_enabled() const -> bool {
