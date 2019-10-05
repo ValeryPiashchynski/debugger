@@ -9,6 +9,7 @@
 #include <iostream>
 #include <sys/ptrace.h>
 #include <wait.h>
+#include <linenoise.h>
 
 debugger::debugger(std::string prog_name, pid_t pid) : m_prog_name{std::move(prog_name)}, m_pid{pid} {
 
@@ -34,6 +35,9 @@ void debugger::handle_command(const std::string &line) {
 
     if (is_prefix(command, "continue")) {
         continue_execution();
+    } else if (is_prefix(command, "break")){
+        std::string addr {args[1], 2}; //assume, that user enter 0xADDRESS
+        set_breakpoint_at_address(std::stol(addr, 0, 16));
     } else {
         std::cerr << "Unknown command\n";
     }

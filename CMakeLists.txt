@@ -6,10 +6,10 @@ set(SOURCE_DIR ./src)
 
 include_directories(${INCLUDE_DIR})
 include_directories(${SOURCE_DIR})
+include_directories(/usr/include)
 
 set(
         SOURCE_FILES
-        src/main.cpp
         ${INCLUDE_DIR}/main.h
         ${INCLUDE_DIR}/breakpoint.h
         ${INCLUDE_DIR}/debugger.h
