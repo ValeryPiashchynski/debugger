@@ -1,3 +1,0 @@
-/tmp/tmp.I8QflpzaUG/cmake-build-archlinux_debug/CMakeFiles/rebuild_cache.dir
-/tmp/tmp.I8QflpzaUG/cmake-build-archlinux_debug/CMakeFiles/debugger.dir
-/tmp/tmp.I8QflpzaUG/cmake-build-archlinux_debug/CMakeFiles/edit_cache.dir
