@@ -54,7 +54,7 @@ std::vector<std::string> debugger::split(const std::string &s, char delimiter) {
 }
 
 bool debugger::is_prefix(const std::string &s, const std::string &of) {
-    if(s.size() > of.size())
+    if (s.size() > of.size())
         return false;
 
     return std::equal(s.begin(), s.end(), of.begin());
@@ -66,4 +66,11 @@ void debugger::continue_execution() {
     int wait_status;
     auto options = 0;
     waitpid(m_pid, &wait_status, options);
+}
+
+void debugger::set_breakpoint_at_address(std::intptr_t addr) {
+    std::cout << "Set breakpoint at address 0x" << std::hex << addr << std::endl;
+    breakpoint bp{m_pid, addr};
+    bp.enable();
+    m_breakpoints[addr] = bp;
 }

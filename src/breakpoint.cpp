@@ -3,10 +3,10 @@
 //
 
 #include <sys/ptrace.h>
+#include <zconf.h>
 #include "../include/breakpoint.h"
 
 breakpoint::breakpoint(pid_t pid, std::intptr_t addr) {
-
 }
 
 void breakpoint::enable() {
