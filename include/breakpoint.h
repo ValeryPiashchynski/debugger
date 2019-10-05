@@ -1,13 +1,8 @@
-//
-// Created by Valery Piashchynski on 3/10/19.
-//
-
 #ifndef DEBUGGER_BREAKPOINT_H
-#define DEBUGGER_BREAKPOINT_H
-
-
 #include <fcntl.h>
 #include <cstdint>
+#define DEBUGGER_BREAKPOINT_H
+
 
 class breakpoint {
 public:

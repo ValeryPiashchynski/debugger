@@ -1,14 +1,11 @@
-//
-// Created by Valery Piashchynski on 2/10/19.
-//
-
 #ifndef DEBUGGER_DEBUGGER_H
-#define DEBUGGER_DEBUGGER_H
 
 #include <string>
 #include <vector>
 #include <unordered_map>
 #include "breakpoint.h"
+
+#define DEBUGGER_DEBUGGER_H
 
 class debugger {
 public:

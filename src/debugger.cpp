@@ -1,7 +1,3 @@
-//
-// Created by Valery Piashchynski on 2/10/19.
-//
-
 #include "../include/debugger.h"
 #include <string>
 #include <vector>

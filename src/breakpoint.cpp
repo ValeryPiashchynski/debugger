@@ -1,7 +1,3 @@
-//
-// Created by Valery Piashchynski on 3/10/19.
-//
-
 #include <sys/ptrace.h>
 #include <zconf.h>
 #include "../include/breakpoint.h"
