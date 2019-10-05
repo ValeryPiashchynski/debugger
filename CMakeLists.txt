@@ -1,4 +1,6 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.14)
+PROJECT(debugger)
+
 set (CMAKE_CXX_STANDARD 17)
 
 set(INCLUDE_DIR ./include)
@@ -7,6 +9,10 @@ set(SOURCE_DIR ./src)
 include_directories(${INCLUDE_DIR})
 include_directories(${SOURCE_DIR})
 include_directories(/usr/include)
+
+find_library(LIBNOISE linenoise /usr/include)
+
+link_libraries("${LIBNOISE}")
 
 set(
         SOURCE_FILES
@@ -18,7 +24,5 @@ set(
         ${SOURCE_DIR}/debugger.cpp
         ${SOURCE_DIR}/breakpoint.cpp
 )
-
-PROJECT(debugger)
 
 ADD_EXECUTABLE(debugger ${SOURCE_FILES})
