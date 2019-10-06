@@ -4,6 +4,9 @@
 
 #include <iostream>
 #include "main.h"
+#include <sys/ptrace.h>
+#include <sys/user.h>
+#include <zconf.h>
 
 //0000000000001169 <main>:
 //1169:	55                   	push   %rbp
@@ -21,5 +24,8 @@
 //119b:	c3                   	retq
 
 int main() {
+    auto pid = getpid();
+    user_regs_struct regs;
+    ptrace(PTRACE_GETREGS, pid, nullptr, &regs);
     std::cerr << "Some message" << std::endl;
 }
