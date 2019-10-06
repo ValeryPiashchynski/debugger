@@ -26,3 +26,5 @@ set(
 )
 
 ADD_EXECUTABLE(debugger ${SOURCE_FILES})
+
+ADD_EXECUTABLE(sample sample/main.cpp sample/main.h)
