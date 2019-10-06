@@ -1,7 +1,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.14)
 PROJECT(debugger)
 
-set (CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 17)
 
 set(INCLUDE_DIR ./include)
 set(SOURCE_DIR ./src)
@@ -19,6 +19,7 @@ set(
         ${INCLUDE_DIR}/main.h
         ${INCLUDE_DIR}/breakpoint.h
         ${INCLUDE_DIR}/debugger.h
+        ${INCLUDE_DIR}/registers.h
 
         ${SOURCE_DIR}/main.cpp
         ${SOURCE_DIR}/debugger.cpp
