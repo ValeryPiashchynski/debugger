@@ -6,6 +6,7 @@
 #include <string>
 #include <array>
 #include <boost/array.hpp>
+#include <boost/iterator.hpp>
 #include <sys/user.h>
 #include <sys/ptrace.h>
 
@@ -69,6 +70,14 @@ const boost::array<
 uint64_t get_register_value(pid_t pid, reg r) {
     user_regs_struct regs{};
     ptrace(PTRACE_GETREGS, pid, nullptr, &regs);
+    auto it = std::find_if(
+            std::begin(g_registers_descriptors),
+            std::end(g_registers_descriptors),
+            [r](auto &&rd) {
+                return rd.r == r;
+            });
+    return *(reinterpret_cast<uint64_t *>(&regs)
+             + (it - std::begin(g_registers_descriptors)));
 }
 
 #endif //DEBUGGER_REGISTERS_H
