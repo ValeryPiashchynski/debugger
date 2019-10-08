@@ -34,9 +34,9 @@ struct reg_descriptor {
 };
 
 
-const boost::array<
-        reg_descriptor,
-        n_registers> g_registers_descriptors
+const boost::array <
+reg_descriptor,
+n_registers> g_registers_descriptors
         {{
                  {reg::r15, 15, "r15"},
                  {reg::r14, 14, "r14"},
