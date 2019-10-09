@@ -19,6 +19,9 @@ public:
 
     void set_breakpoint_at_address(std::intptr_t addr);
 
+    void dump_registers();
+
+
     void run();
 
 private:

@@ -1,11 +1,12 @@
 #include "../include/debugger.h"
 #include <string>
 #include <vector>
-#include <sstream>
 #include <iostream>
 #include <sys/ptrace.h>
 #include <wait.h>
 #include <linenoise.h>
+#include <registers.h>
+#include <iomanip>
 
 debugger::debugger(std::string prog_name, pid_t pid) : m_prog_name{std::move(prog_name)}, m_pid{pid} {
 
@@ -73,4 +74,17 @@ void debugger::set_breakpoint_at_address(std::intptr_t addr) {
     breakpoint bp {m_pid, addr};
     bp.enable();
     m_breakpoints.insert(std::make_pair(addr, bp));
+}
+
+void debugger::dump_registers() {
+    for(const auto &rd:g_registers_descriptors) {
+        std::cout
+        << rd.name
+        << "0x"
+        << std::setfill('0')
+        << std::setw(16)
+        << std::hex
+        << get_register_value(m_pid,rd.r)
+        << std::endl;
+    }
 }
