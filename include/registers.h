@@ -95,12 +95,6 @@ uint64_t get_register_value(pid_t pid, reg r) {
              (it - std::begin(g_registers_descriptors)));
 }
 
-uint64_t get_reg_value(pid_t pid, reg r) {
-    user_regs_struct regs{};
-
-
-}
-
 void set_register_value(pid_t pid, reg r, uint64_t value) {
     user_regs_struct regs{};
     ptrace(PTRACE_GETREGS, pid, nullptr, &regs);
@@ -112,6 +106,7 @@ void set_register_value(pid_t pid, reg r, uint64_t value) {
       (it - std::begin(g_registers_descriptors))) = value;
     ptrace(PTRACE_SETREGS, pid, nullptr, &regs);
 }
+
 
 uint64_t get_register_value_from_dwarf_register(pid_t pid, unsigned regnum) {
     const reg_descriptor *it =

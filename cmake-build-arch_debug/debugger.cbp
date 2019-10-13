@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="debugger"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="debugger">
+				<Option output="/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/debugger" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/tmp/tmp.oPOmILp7xO/./include"/>
+					<Add directory="/tmp/tmp.oPOmILp7xO/./src"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 debugger"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="debugger/fast">
+				<Option output="/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/debugger" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/tmp/tmp.oPOmILp7xO/./include"/>
+					<Add directory="/tmp/tmp.oPOmILp7xO/./src"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 debugger/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="sample">
+				<Option output="/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/sample" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/tmp/tmp.oPOmILp7xO/./include"/>
+					<Add directory="/tmp/tmp.oPOmILp7xO/./src"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 sample"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="sample/fast">
+				<Option output="/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/sample" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/tmp/tmp.oPOmILp7xO/./include"/>
+					<Add directory="/tmp/tmp.oPOmILp7xO/./src"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 sample/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/tmp/tmp.oPOmILp7xO/cmake-build-arch_debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/tmp/tmp.oPOmILp7xO/include/breakpoint.h">
+			<Option target="debugger"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.oPOmILp7xO/include/debugger.h">
+			<Option target="debugger"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.oPOmILp7xO/include/main.h">
+			<Option target="debugger"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.oPOmILp7xO/include/registers.h">
+			<Option target="debugger"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.oPOmILp7xO/sample/main.cpp">
+			<Option target="sample"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.oPOmILp7xO/sample/main.h">
+			<Option target="sample"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.oPOmILp7xO/src/breakpoint.cpp">
+			<Option target="debugger"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.oPOmILp7xO/src/debugger.cpp">
+			<Option target="debugger"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.oPOmILp7xO/src/main.cpp">
+			<Option target="debugger"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.oPOmILp7xO/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

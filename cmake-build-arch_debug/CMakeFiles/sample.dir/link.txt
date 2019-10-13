@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/sample.dir/sample/main.cpp.o  -o sample -llinenoise 

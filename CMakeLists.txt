@@ -10,7 +10,7 @@ include_directories(${INCLUDE_DIR})
 include_directories(${SOURCE_DIR})
 include_directories(/usr/include)
 
-find_library(LIBNOISE liblinenoise.so.0 /usr/lib64/)
+find_library(LIBNOISE linenoise /usr/include)
 
 link_libraries("${LIBNOISE}")
 
