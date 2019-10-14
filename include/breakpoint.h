@@ -7,6 +7,7 @@
 
 class breakpoint {
 public:
+    breakpoint() = default;
     breakpoint(pid_t pid, std::intptr_t addr);
 
     void enable();
