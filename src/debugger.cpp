@@ -32,14 +32,26 @@ void debugger::handle_command(const std::string &line) {
 
     if (is_prefix(command, "continue")) {
         continue_execution();
-    } else if (is_prefix(command, "break")){
-        std::string addr {args[1], 2}; //assume, that user enter 0xADDRESS
+    } else if (is_prefix(command, "break")) {
+        std::string addr{args[1], 2}; //assume, that user enter 0xADDRESS
         set_breakpoint_at_address(std::stol(addr, 0, 16));
-    } else {
-        std::cerr << "Unknown command\n";
+    } else if (is_prefix(command, "register")) {
+        if (is_prefix(args[1], "dump")) {
+            dump_registers();
+        }
+    } else if (is_prefix(command, "memory")) {
+        std::string addr{args[2], 2};
+        if (is_prefix(args[1], "read")) {
+            std::cout << std::hex <<
+                      read_memory(std::stol(addr, 0, 16))
+                      << std::endl;
+        }
+        if (is_prefix(args[1], "write")) {
+            std::string val{args[3], 2};
+            write_memory(std::stol(addr, 0, 16), std::stol(val, 0, 16));
+        }
     }
 }
-
 
 std::vector<std::string> debugger::split(const std::string &s, char delimiter) {
     std::vector<std::string> out{};
@@ -71,20 +83,36 @@ void debugger::continue_execution() {
 
 void debugger::set_breakpoint_at_address(std::intptr_t addr) {
     std::cout << "Set breakpoint at address 0x" << std::hex << addr << std::endl;
-    breakpoint bp {m_pid, addr};
+    breakpoint bp{m_pid, addr};
     bp.enable();
     m_breakpoints.insert(std::make_pair(addr, bp));
 }
 
 void debugger::dump_registers() {
-    for(const auto &rd:g_registers_descriptors) {
+    for (const auto &rd:g_registers_descriptors) {
         std::cout
-        << rd.name
-        << "0x"
-        << std::setfill('0')
-        << std::setw(16)
-        << std::hex
-        << get_register_value(m_pid,rd.r)
-        << std::endl;
+                << rd.name
+                << "0x"
+                << std::setfill('0')
+                << std::setw(16)
+                << std::hex
+                << get_register_value(m_pid, rd.r)
+                << std::endl;
     }
+}
+
+uint64_t debugger::read_memory(uint64_t address) {
+    return ptrace(PTRACE_PEEKDATA, m_pid, address, nullptr);
+}
+
+void debugger::write_memory(uint64_t address, uint64_t value) {
+    ptrace(PTRACE_POKEDATA, m_pid, address, value);
+}
+
+uint64_t debugger::get_pc() {
+    return get_register_value(m_pid, reg::rip);
+}
+
+void debugger::set_pc(uint64_t pc) {
+    set_register_value(m_pid, reg::rip, pc);
 }
