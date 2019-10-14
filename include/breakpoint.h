@@ -14,8 +14,8 @@ public:
 
     void disable();
 
-    auto is_enabled() const -> bool;
-    auto get_address() const -> std::intptr_t;
+    [[nodiscard]] auto is_enabled() const -> bool;
+    [[nodiscard]] auto get_address() const -> std::intptr_t;
 
 private:
     pid_t m_pid;
