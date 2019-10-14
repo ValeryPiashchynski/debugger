@@ -63,7 +63,6 @@ std::vector<std::string> debugger::split(const std::string &s, char delimiter) {
     }
 
     return out;
-
 }
 
 bool debugger::is_prefix(const std::string &s, const std::string &of) {
@@ -74,11 +73,9 @@ bool debugger::is_prefix(const std::string &s, const std::string &of) {
 }
 
 void debugger::continue_execution() {
+    step_over_breakpoint();
     ptrace(PTRACE_CONT, m_pid, nullptr, nullptr);
-
-    int wait_status;
-    auto options = 0;
-    waitpid(m_pid, &wait_status, options);
+    wait_for_signal();
 }
 
 void debugger::set_breakpoint_at_address(std::intptr_t addr) {
@@ -116,3 +113,69 @@ uint64_t debugger::get_pc() {
 void debugger::set_pc(uint64_t pc) {
     set_register_value(m_pid, reg::rip, pc);
 }
+
+void debugger::step_over_breakpoint() {
+    // -1 because execution will go past the breakpoint
+    uint64_t possible_breakpoint_location = get_pc() - 1;
+
+    if (m_breakpoints.count((possible_breakpoint_location))) {
+        auto &bp = m_breakpoints[possible_breakpoint_location];
+
+        if (bp.is_enabled()) {
+            auto previous_instruction_address = possible_breakpoint_location;
+            set_pc(previous_instruction_address);
+
+            bp.disable();
+            ptrace(PTRACE_SINGLESTEP, m_pid, nullptr, nullptr);
+            wait_for_signal();
+            bp.enable();
+        }
+    }
+}
+
+// encapsulate waitpid syscall
+void debugger::wait_for_signal() {
+    int wait_status;
+    auto options = 0;
+    waitpid(m_pid, &wait_status, options);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

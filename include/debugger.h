@@ -19,6 +19,10 @@ public:
 
     void set_breakpoint_at_address(std::intptr_t addr);
 
+    void step_over_breakpoint();
+
+    void wait_for_signal();
+
     void dump_registers();
 
     uint64_t read_memory(uint64_t address);
