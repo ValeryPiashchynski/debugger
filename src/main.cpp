@@ -29,6 +29,7 @@ int main(int argc, char *argv[]) {
         //we're in the parent process
         // exec debugger
         debugger dbg{prog, pid};
+        dbg.run();
     }
 }
 

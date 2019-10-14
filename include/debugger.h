@@ -9,7 +9,7 @@
 
 class debugger {
 public:
-    debugger(std::string prog_name, pid_t pid);
+    debugger(std::string prog_name, pid_t pid) : m_prog_name{std::move(prog_name)}, m_pid{pid} {};
 
     void handle_command(const std::string &line);
 
@@ -30,6 +30,7 @@ public:
     void write_memory(uint64_t address, uint64_t value);
 
     uint64_t get_pc();
+
     void set_pc(uint64_t pc);
 
     void run();
