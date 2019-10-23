@@ -52,7 +52,7 @@ struct reg_descriptor {
     std::string name;
 };
 
-const boost::array<reg_descriptor, n_registers>
+const boost::array <reg_descriptor, n_registers>
         g_registers_descriptors{
         {
                 {reg::r15, 15, "r15"},

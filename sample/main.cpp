@@ -20,5 +20,8 @@
 //119b:	c3                   	retq
 
 int main() {
-    std::cerr << "Some message" << std::endl;
+    long a = 3;
+    long b = 2;
+    long c = a + b;
+    a = 4;
 }

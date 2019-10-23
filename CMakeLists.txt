@@ -14,6 +14,12 @@ find_library(LIBNOISE linenoise /usr/include)
 
 link_libraries("${LIBNOISE}")
 
+add_custom_target(
+        libelfin
+        COMMAND make
+        WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/external/libelfin
+)
+
 set(
         SOURCE_FILES
         ${INCLUDE_DIR}/main.h
@@ -26,6 +32,11 @@ set(
         ${SOURCE_DIR}/breakpoint.cpp
 )
 
+
 ADD_EXECUTABLE(debugger ${SOURCE_FILES})
+
+target_link_libraries(debugger
+        ${PROJECT_SOURCE_DIR}/external/libelfin/dwarf/libdwarf++.so
+        ${PROJECT_SOURCE_DIR}/external/libelfin/elf/libelf++.so)
 
 ADD_EXECUTABLE(sample sample/main.cpp sample/main.h)

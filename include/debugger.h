@@ -1,6 +1,8 @@
 #ifndef DEBUGGER_DEBUGGER_H
 
 #include <string>
+#include "../external/libelfin/dwarf/dwarf++.hh"
+#include "../external/libelfin/elf/elf++.hh"
 #include <vector>
 #include <unordered_map>
 #include "breakpoint.h"
@@ -9,7 +11,11 @@
 
 class debugger {
 public:
-    debugger(std::string prog_name, pid_t pid) : m_prog_name{std::move(prog_name)}, m_pid{pid} {};
+    debugger(std::string prog_name, pid_t pid) : m_prog_name{std::move(prog_name)}, m_pid{pid} {
+        auto fd = open(m_prog_name.c_str(), O_RDONLY);
+
+        m_elf = elf::elf{};
+    };
 
     void handle_command(const std::string &line);
 
@@ -38,6 +44,8 @@ public:
 private:
     std::string m_prog_name;
     pid_t m_pid;
+    dwarf::dwarf m_dwarf;
+    elf::elf m_elf;
 
     void continue_execution();
 
