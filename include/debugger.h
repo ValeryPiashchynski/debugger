@@ -5,6 +5,7 @@
 #include "../external/libelfin/elf/elf++.hh"
 #include <vector>
 #include <unordered_map>
+#include <bits/types/siginfo_t.h>
 #include "breakpoint.h"
 
 #define DEBUGGER_DEBUGGER_H
@@ -14,10 +15,15 @@ public:
     debugger(std::string prog_name, pid_t pid) : m_prog_name{std::move(prog_name)}, m_pid{pid} {
         auto fd = open(m_prog_name.c_str(), O_RDONLY);
 
-        m_elf = elf::elf{};
+        m_elf = elf::elf{elf::create_mmap_loader(fd)};
+        m_dwarf = dwarf::dwarf{dwarf::elf::create_loader(m_elf)};
     };
 
+    siginfo_t get_signal_info();
+
     void handle_command(const std::string &line);
+
+    void handle_sigtrap(siginfo_t info);
 
     std::vector<std::string> split(const std::string &s, char delimiter);
 
@@ -30,6 +36,12 @@ public:
     void wait_for_signal();
 
     void dump_registers();
+
+    dwarf::die get_function_from_pc(uint64_t pc);
+
+    dwarf::line_table::iterator get_line_entry_from_pc(uint64_t pc);
+
+    void print_source(const std::string& file_name, unsigned line, unsigned n_lines_context=2);
 
     uint64_t read_memory(uint64_t address);
 

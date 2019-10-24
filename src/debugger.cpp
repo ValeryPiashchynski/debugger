@@ -6,6 +6,7 @@
 #include <wait.h>
 #include <registers.h>
 #include <iomanip>
+#include <fstream>
 #include "linenoise.h"
 
 
@@ -142,6 +143,112 @@ void debugger::wait_for_signal() {
     int wait_status;
     auto options = 0;
     waitpid(m_pid, &wait_status, options);
+
+    auto siginfo = get_signal_info();
+    switch (siginfo.si_signo) {
+        case SIGTRAP:
+            handle_sigtrap(siginfo);
+            break;
+        case SIGSEGV:
+            std::cout << "Segfault, noooo. Reason: " << siginfo.si_code << std::endl;
+            break;
+        default:
+            std::cout << "Got signal " << strsignal(siginfo.si_signo) << std::endl;
+    }
+
+}
+
+// debugging information entry (DIE)
+dwarf::die debugger::get_function_from_pc(uint64_t pc) {
+    for (auto &cu: m_dwarf.compilation_units()) {
+        if (die_pc_range(cu.root()).contains(pc)) {
+            for (const auto &die: cu.root()) {
+                if (die.tag == dwarf::DW_TAG::subprogram) {
+                    if (die_pc_range(die).contains(pc)) {
+                        return die;
+                    }
+                }
+            }
+        }
+    }
+    throw std::out_of_range{"cannot find function"};
+}
+
+// simply find the correct compilation unit, then ask the line table to get us
+// the relevant entry
+dwarf::line_table::iterator debugger::get_line_entry_from_pc(uint64_t pc) {
+    for (auto &cu: m_dwarf.compilation_units()) {
+        if (die_pc_range(cu.root()).contains(pc)) {
+            auto &lt = cu.get_line_table();
+            auto it = lt.find_address(pc);
+            if (it == lt.end()) {
+                throw std::out_of_range{"cannot find line entry"};
+            } else {
+                return it;
+            }
+        }
+    }
+    throw std::out_of_range{"cannot find line entry"};
+}
+
+void debugger::print_source(const std::string &file_name, unsigned line, unsigned n_lines_context) {
+    std::ifstream file{file_name};
+
+    auto start_line = line <= n_lines_context ? 1 : line - n_lines_context;
+    auto end_line = line + n_lines_context + (line < n_lines_context ? n_lines_context - line : 0);
+
+    char c{};
+
+    auto current_line = 1u;
+
+    //skip line until start line
+    while (current_line != start_line && file.get(c)) {
+        if (c == '\n')
+            ++current_line;
+    }
+
+    //output cursor if we're at the current line
+    std::cout << (current_line == line ? "> " : "  ");
+
+    //write lines up until end_line
+    while (current_line <= end_line && file.get(c)) {
+        std::cout << c;
+        if (c == '\n') {
+            ++current_line;
+            //output cursor if we're at the current line
+            std::cout << (current_line == line ? "> " : "  ");
+        }
+    }
+
+    //write newline and make sure that the stream is flushed properly
+    std::cout << std::endl;
+}
+
+// to be able to tell what signal was sent to the process, but also we want to know
+// how in was produced;
+siginfo_t debugger::get_signal_info() {
+    siginfo_t info;
+    ptrace(PTRACE_GETSIGINFO, m_pid, nullptr, &info);
+    return info;
+}
+
+void debugger::handle_sigtrap(siginfo_t info) {
+    switch (info.si_code) {
+        //one of these will be set if a breakpoint was hit
+        case SI_KERNEL:
+        case TRAP_BRKPT: {
+            set_pc(get_pc() - 1); //put the pc back where is should be
+            std::cout << "Hit breakpoint at address 0x" << std::hex << get_pc() << std::endl;
+            auto line_entry = get_line_entry_from_pc(get_pc());
+            print_source(line_entry->file->path, line_entry->line);
+            return;;
+        }
+        case TRAP_TRACE:
+            return;
+        default:
+            std::cout << "Unknown SIGTRAP code " << info.si_code << std::endl;
+            return;
+    }
 }
 
 
