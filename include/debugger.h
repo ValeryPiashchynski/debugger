@@ -10,6 +10,21 @@
 
 #define DEBUGGER_DEBUGGER_H
 
+enum class symbol_type {
+    notype, // (no type, absolute symbol)
+    object, // data object
+    func,   // function entry point
+    section, // symbol is associated with a section
+    file, // source file is associated with a object file
+};
+
+
+struct symbol {
+    symbol_type type;
+    std::string name;
+    std::uintptr_t addr;
+};
+
 class debugger {
 public:
     debugger(std::string prog_name, pid_t pid) : m_prog_name{std::move(prog_name)}, m_pid{pid} {
@@ -30,6 +45,12 @@ public:
     bool is_prefix(const std::string &s, const std::string &of);
 
     void set_breakpoint_at_address(std::intptr_t addr);
+
+    void set_breakpoint_at_function(const std::string &name);
+
+    void set_breakpoint_at_source_line(const std::string &file, unsigned line);
+
+    std::vector<symbol> lookup_symbol(const std::string &name);
 
     void step_over_breakpoint();
 
