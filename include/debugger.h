@@ -33,6 +33,18 @@ public:
 
     void step_over_breakpoint();
 
+    void step_over();
+
+    void step_out();
+
+    void step_in();
+
+    void remove_breakpoint(std::intptr_t addr);
+
+    void single_step_instruction();
+
+    void single_step_instruction_with_breakpoint_check();
+
     void wait_for_signal();
 
     void dump_registers();
@@ -41,7 +53,7 @@ public:
 
     dwarf::line_table::iterator get_line_entry_from_pc(uint64_t pc);
 
-    void print_source(const std::string& file_name, unsigned line, unsigned n_lines_context=2);
+    void print_source(const std::string &file_name, unsigned line, unsigned n_lines_context = 2);
 
     uint64_t read_memory(uint64_t address);
 
